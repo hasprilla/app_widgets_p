@@ -6,37 +6,18 @@ void main() {
   runApp(const MyApp());
 }
 
-final List<String> _tiposAhorro = [
-  'Ahorro General',
-  'Ahorro Emergencia',
-  'Ahorro Vacaciones',
-  'Ahorro Educación',
-  'Ahorro Retiro',
-  'Ahorro Hogar',
-  'Ahorro Salud',
-  'Ahorro Inversión',
-  'Ahorro Personal',
-  'Ahorro Otros',
-  'Ahorro Ksj',
-  'Ahorro Ksjssss',
-  'Ahorro Otro mas',
-];
-
-final List<String> _montos = [
-  '\$1,250.00',
-  '\$3,500.00',
-  '\$2,100.00',
-  '\$4,300.00',
-  '\$8,750.00',
-  '\$1,900.00',
-  '\$2,500.00',
-  '\$5,200.00',
-  '\$1,000.00',
-  '\$44,000.00',
-  '\$44,000.00',
-  '\$3,00.00',
-  '\$344,00.00',
-];
+Map<String, String> misAhorros = {
+  'Ahorro General': '\$1,250.00',
+  'Ahorro Emergencia': '\$3,500.00',
+  'Ahorro Vacaciones': '\$2,100.00',
+  'Ahorro Educación': '\$4,300.00',
+  'Ahorro Retiro': '\$8,750.00',
+  'Ahorro Hogar': '\$1,900.00',
+  'Ahorro Salud': '\$2,500.00',
+  'Ahorro Inversión': '\$5,200.00',
+  'Ahorro Personal': '\$1,000.00',
+  'Ahorro Otros': '\$44,000.00',
+};
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -48,8 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'App Widgets',
       theme: AppTheme().getTheme(),
       home: AhorrosScreen(
-        tiposAhorro: _tiposAhorro,
-        montos: _montos,
+        ahorrosData: misAhorros,
       ),
     );
   }

@@ -4,11 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/ahorros_cubit.dart';
 
 class AhorrosScreen extends StatelessWidget {
-  const AhorrosScreen(
-      {super.key, required this.tiposAhorro, required this.montos});
+  const AhorrosScreen({super.key, required this.ahorrosData});
 
-  final List<String> tiposAhorro;
-  final List<String> montos;
+  final Map<String, String> ahorrosData;
 
   @override
   Widget build(BuildContext context) {
@@ -22,23 +20,16 @@ class AhorrosScreen extends StatelessWidget {
               icon: const Icon(Icons.refresh),
               onPressed: () {
                 final cubit = context.read<AhorrosCubit>();
-
-                cubit.syncWithArrays(tiposAhorro, montos);
+                cubit.syncWithData(ahorrosData);
               },
             ),
           ],
         ),
         body: BlocBuilder<AhorrosCubit, AhorrosState>(
           builder: (context, state) {
-            final minCount = tiposAhorro.length <= montos.length
-                ? tiposAhorro.length
-                : montos.length;
-
-            if (minCount != state.itemCount) {
+            if (ahorrosData.length != state.itemCount) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                context
-                    .read<AhorrosCubit>()
-                    .syncWithArrays(tiposAhorro, montos);
+                context.read<AhorrosCubit>().syncWithData(ahorrosData);
               });
             }
 
@@ -67,8 +58,7 @@ class AhorrosScreen extends StatelessWidget {
                         },
                         child: CardAhorro(
                           index: index,
-                          tiposAhorro: tiposAhorro,
-                          montos: montos,
+                          ahorrosData: ahorrosData,
                         ),
                       );
                     },
@@ -92,20 +82,20 @@ class AhorrosScreen extends StatelessWidget {
 
 class CardAhorro extends StatelessWidget {
   final int index;
-  final List<String> tiposAhorro;
-  final List<String> montos;
+  final Map<String, String> ahorrosData;
 
   const CardAhorro({
     super.key,
     required this.index,
-    required this.tiposAhorro,
-    required this.montos,
+    required this.ahorrosData,
   });
 
   @override
   Widget build(BuildContext context) {
-    final safeIndex =
-        index < tiposAhorro.length && index < montos.length ? index : 0;
+    final keys = ahorrosData.keys.toList();
+    final safeIndex = index < keys.length ? index : 0;
+    final tipoAhorro = keys[safeIndex];
+    final monto = ahorrosData[tipoAhorro] ?? '\$0.00';
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
@@ -131,14 +121,14 @@ class CardAhorro extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      tiposAhorro[safeIndex],
+                      tipoAhorro,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      montos[safeIndex],
+                      monto,
                       style:
                           Theme.of(context).textTheme.headlineSmall?.copyWith(
                                 fontWeight: FontWeight.bold,
