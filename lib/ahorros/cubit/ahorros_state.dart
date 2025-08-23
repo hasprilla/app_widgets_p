@@ -3,23 +3,30 @@ part of 'ahorros_cubit.dart';
 class AhorrosState {
   final int currentPage;
   final PageController pageController;
-  final int itemCount;
+  final List<AhorroModel> ahorros;
 
   AhorrosState({
     required this.currentPage,
     required this.pageController,
-    required this.itemCount,
+    required this.ahorros,
   });
+
+  int get itemCount => ahorros.length;
+
+  AhorroModel? get currentAhorro =>
+      currentPage >= 0 && currentPage < ahorros.length
+          ? ahorros[currentPage]
+          : null;
 
   AhorrosState copyWith({
     int? currentPage,
     PageController? pageController,
-    int? itemCount,
+    List<AhorroModel>? ahorros,
   }) {
     return AhorrosState(
       currentPage: currentPage ?? this.currentPage,
       pageController: pageController ?? this.pageController,
-      itemCount: itemCount ?? this.itemCount,
+      ahorros: ahorros ?? this.ahorros,
     );
   }
 }
