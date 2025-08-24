@@ -33,12 +33,26 @@ class CardAhorro extends StatelessWidget {
               children: [
                 Icon(
                   iconData,
-                  size: 40,
+                  size: 90,
                   color: Theme.of(context).primaryColor,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(
+                      width: double.infinity, // Ocupa todo el ancho disponible
+                      child: ElevatedButton(
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content:
+                                  Text('Ahorro seleccionado: ${ahorro.nombre}'),
+                            ),
+                          );
+                        },
+                        child: Text('Seleccionar'),
+                      ),
+                    ),
                     Text(
                       ahorro.nombre,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(

@@ -71,13 +71,14 @@ class _AhorrosScreenContent extends StatelessWidget {
                   children: [
                     WidgetSpan(
                       child: TextSpanProrrogaWidget(
-                        fecha: '23-08-2025 13:57:59',
+                        fecha: '25-08-2025 13:57:59',
                         dias: '5',
                         valorExtendido: 'no',
                         textSpanValido: TextSpan(
-                          text: 'Solicitar prórroga',
-                          style: const TextStyle(
-                            color: Colors.blue,
+                          text: 'prórrogar',
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                            decoration: TextDecoration.underline,
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
