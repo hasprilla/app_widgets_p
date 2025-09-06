@@ -4,21 +4,21 @@ import '../model/ahorros_model.dart';
 
 final List<AhorroModel> misAhorros = [
   AhorroModel(
-    id: '1',
+    id: 1,
     nombre: 'Ahorro General',
     monto: 1250.00,
     icono: 'account_balance_rounded',
     fechaCreacion: DateTime(2023, 1, 15),
   ),
   AhorroModel(
-    id: '2',
+    id: 2,
     nombre: 'Ahorro Emergencia',
     monto: 3500.00,
     icono: 'emergency',
     fechaCreacion: DateTime(2023, 2, 10),
   ),
   AhorroModel(
-    id: '3',
+    id: 3,
     nombre: 'Ahorro Vacaciones',
     monto: 2100.00,
     icono: 'vacation',

@@ -47,7 +47,7 @@ class AhorrosCubit extends Cubit<AhorrosState> {
     emit(state.copyWith(ahorros: nuevosAhorros));
   }
 
-  void eliminarAhorro(String id) {
+  void eliminarAhorro(int id) {
     final nuevosAhorros =
         state.ahorros.where((ahorro) => ahorro.id != id).toList();
     emit(state.copyWith(ahorros: nuevosAhorros));

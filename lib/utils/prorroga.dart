@@ -26,7 +26,7 @@ class TextSpanProrrogaWidget extends StatelessWidget {
         valorExtendido: valorExtendido,
       ),
       initialData: FechaProrrogaUtil.validarFechaProrroga(
-        fecha: fecha,
+        date: fecha,
         dias: dias,
         valorExtendido: valorExtendido,
       ),

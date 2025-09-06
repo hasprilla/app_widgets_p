@@ -1,5 +1,5 @@
 class AhorroModel {
-  final String id;
+  final int id;
   final String nombre;
   final double monto;
   final String icono;
@@ -36,7 +36,7 @@ class AhorroModel {
   String get montoFormateado => '\$${monto.toStringAsFixed(2)}';
 
   AhorroModel copyWith({
-    String? id,
+    int? id,
     String? nombre,
     double? monto,
     String? icono,

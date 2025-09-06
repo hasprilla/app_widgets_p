@@ -8,7 +8,7 @@ class FechaProrrogaUtil {
   }) {
     return Stream.periodic(const Duration(seconds: 1), (_) {
       return validarFechaProrroga(
-        fecha: fecha,
+        date: fecha,
         dias: dias,
         valorExtendido: valorExtendido,
       );
@@ -16,7 +16,7 @@ class FechaProrrogaUtil {
   }
 
   static bool validarFechaProrroga({
-    required String fecha,
+    required String date,
     required String dias,
     required String valorExtendido,
   }) {
@@ -25,7 +25,7 @@ class FechaProrrogaUtil {
     }
 
     try {
-      final parts = fecha.split(' ');
+      final parts = date.split(' ');
       final dateParts = parts[0].split('-');
       final timeParts = parts[1].split(':');
 

@@ -46,7 +46,7 @@ class _AhorrosScreenContent extends StatelessWidget {
             onPressed: () {
               final cubit = context.read<AhorrosCubit>();
               final nuevoAhorro = AhorroModel(
-                id: DateTime.now().millisecondsSinceEpoch.toString(),
+                id: 1,
                 nombre: 'Nuevo Ahorro',
                 monto: 1000.0,
                 fechaCreacion: DateTime.now(),

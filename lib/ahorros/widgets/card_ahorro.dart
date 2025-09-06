@@ -50,7 +50,7 @@ class CardAhorro extends StatelessWidget {
                             ),
                           );
                         },
-                        child: Text('Seleccionar'),
+                        child: const Text('Seleccionar'),
                       ),
                     ),
                     Text(
