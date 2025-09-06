@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'ahorros/model/ahorros_model.dart';
+import 'utils/product_shimmer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -65,7 +66,7 @@ class MyHome extends StatelessWidget {
       stream: ProductosService().productosStream,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
+          return const ProductCardShimmer();
         }
 
         if (snapshot.hasError) {
